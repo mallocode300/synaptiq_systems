@@ -110,6 +110,39 @@ const translations = {
             copyright: "© {year} Synaptiq. All rights reserved.",
             privacy: "Privacy Policy",
             terms: "Terms of Service"
+        },
+        cookie: {
+            banner: {
+                title: "We use cookies",
+                description: "We use cookies to enhance your experience, analyze traffic, and improve our services. You can accept all, reject all non-essential, or manage your preferences.",
+                acceptAll: "Accept all",
+                rejectAll: "Reject non‑essential",
+                customize: "Customize"
+            },
+            modal: {
+                title: "Cookie preferences",
+                description: "Select which categories of cookies you consent to. You can change your choices at any time.",
+                save: "Save preferences",
+                categories: {
+                    necessary: {
+                        name: "Strictly necessary",
+                        description: "Required for basic site functionality and cannot be switched off."
+                    },
+                    functional: {
+                        name: "Functional",
+                        description: "Enhance functionality and personalization."
+                    },
+                    analytics: {
+                        name: "Analytics",
+                        description: "Help us understand how our site is used to improve it."
+                    },
+                    marketing: {
+                        name: "Marketing",
+                        description: "Used to deliver relevant ads and measure their performance."
+                    }
+                }
+            },
+            settingsLink: "Cookie Settings"
         }
     },
     fr: {
@@ -222,6 +255,39 @@ const translations = {
             copyright: "© {year} Synaptiq. Tous droits réservés.",
             privacy: "Politique de Confidentialité",
             terms: "Conditions d'Utilisation"
+        },
+        cookie: {
+            banner: {
+                title: "Nous utilisons des cookies",
+                description: "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et optimiser nos services. Vous pouvez tout accepter, tout refuser (hors essentiels) ou gérer vos préférences.",
+                acceptAll: "Tout accepter",
+                rejectAll: "Refuser les non essentiels",
+                customize: "Personnaliser"
+            },
+            modal: {
+                title: "Préférences de cookies",
+                description: "Sélectionnez les catégories de cookies auxquelles vous consentez. Vous pouvez modifier vos choix à tout moment.",
+                save: "Enregistrer les préférences",
+                categories: {
+                    necessary: {
+                        name: "Strictement nécessaires",
+                        description: "Requis pour le fonctionnement de base du site et ne peuvent pas être désactivés."
+                    },
+                    functional: {
+                        name: "Fonctionnels",
+                        description: "Améliorent les fonctionnalités et la personnalisation."
+                    },
+                    analytics: {
+                        name: "Analytiques",
+                        description: "Nous aident à comprendre l'utilisation du site pour l'améliorer."
+                    },
+                    marketing: {
+                        name: "Marketing",
+                        description: "Utilisés pour fournir des publicités pertinentes et mesurer leur performance."
+                    }
+                }
+            },
+            settingsLink: "Paramètres des cookies"
         }
     }
 };
@@ -636,6 +702,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Cookie consent (RGPD)
+    initializeCookieConsent();
 });
 
 // Add CSS for active nav link
@@ -649,3 +718,213 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// Cookie consent implementation
+const COOKIE_STORAGE_KEY = 'synaptiq-cookie-consent';
+
+function getSavedCookieConsent() {
+    try {
+        const raw = localStorage.getItem(COOKIE_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function saveCookieConsent(consent) {
+    localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(consent));
+}
+
+function defaultCookieConsent() {
+    return {
+        consentGiven: false,
+        categories: {
+            necessary: true,
+            functional: false,
+            analytics: false,
+            marketing: false
+        },
+        timestamp: Date.now()
+    };
+}
+
+function initializeCookieConsent() {
+    const saved = getSavedCookieConsent();
+    if (!saved || !saved.consentGiven) {
+        renderCookieBanner();
+    } else {
+        applyCookiePreferences(saved.categories);
+        addFooterCookieSettingsLink();
+    }
+}
+
+function renderCookieBanner() {
+    // Remove existing if any
+    const existing = document.querySelector('.cookie-banner');
+    if (existing) existing.remove();
+
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+        <div class="cookie-banner-content">
+            <div class="cookie-text">
+                <h4 data-translate="cookie.banner.title">We use cookies</h4>
+                <p data-translate="cookie.banner.description">We use cookies to enhance your experience...</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="btn btn-secondary cookie-reject" data-translate="cookie.banner.rejectAll">Reject non‑essential</button>
+                <button class="btn btn-secondary cookie-customize" data-translate="cookie.banner.customize">Customize</button>
+                <button class="btn btn-primary cookie-accept" data-translate="cookie.banner.acceptAll">Accept all</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(banner);
+    updatePageLanguage();
+
+    banner.querySelector('.cookie-accept').addEventListener('click', () => {
+        const consent = defaultCookieConsent();
+        consent.categories.functional = true;
+        consent.categories.analytics = true;
+        consent.categories.marketing = true;
+        consent.consentGiven = true;
+        consent.timestamp = Date.now();
+        saveCookieConsent(consent);
+        applyCookiePreferences(consent.categories);
+        banner.remove();
+        addFooterCookieSettingsLink();
+    });
+
+    banner.querySelector('.cookie-reject').addEventListener('click', () => {
+        const consent = defaultCookieConsent();
+        consent.consentGiven = true;
+        consent.timestamp = Date.now();
+        saveCookieConsent(consent);
+        applyCookiePreferences(consent.categories);
+        banner.remove();
+        addFooterCookieSettingsLink();
+    });
+
+    banner.querySelector('.cookie-customize').addEventListener('click', () => {
+        renderCookieModal();
+    });
+}
+
+function renderCookieModal() {
+    const existing = document.querySelector('.cookie-modal-overlay');
+    if (existing) existing.remove();
+
+    const saved = getSavedCookieConsent() || defaultCookieConsent();
+    const overlay = document.createElement('div');
+    overlay.className = 'cookie-modal-overlay';
+
+    const modal = document.createElement('div');
+    modal.className = 'cookie-modal';
+    modal.innerHTML = `
+        <div class="cookie-modal-header">
+            <h3 data-translate="cookie.modal.title">Cookie preferences</h3>
+            <button class="cookie-modal-close" aria-label="Close">×</button>
+        </div>
+        <p class="cookie-modal-desc" data-translate="cookie.modal.description">Select which categories...</p>
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span class="cookie-category-name" data-translate="cookie.modal.categories.necessary.name">Strictly necessary</span>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="cookie-category-desc" data-translate="cookie.modal.categories.necessary.description">Required...</p>
+        </div>
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span class="cookie-category-name" data-translate="cookie.modal.categories.functional.name">Functional</span>
+                <label class="switch">
+                    <input id="cookie-functional" type="checkbox" ${saved.categories.functional ? 'checked' : ''}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="cookie-category-desc" data-translate="cookie.modal.categories.functional.description">Enhance functionality...</p>
+        </div>
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span class="cookie-category-name" data-translate="cookie.modal.categories.analytics.name">Analytics</span>
+                <label class="switch">
+                    <input id="cookie-analytics" type="checkbox" ${saved.categories.analytics ? 'checked' : ''}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="cookie-category-desc" data-translate="cookie.modal.categories.analytics.description">Help us understand...</p>
+        </div>
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span class="cookie-category-name" data-translate="cookie.modal.categories.marketing.name">Marketing</span>
+                <label class="switch">
+                    <input id="cookie-marketing" type="checkbox" ${saved.categories.marketing ? 'checked' : ''}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="cookie-category-desc" data-translate="cookie.modal.categories.marketing.description">Used to deliver ads...</p>
+        </div>
+        <div class="cookie-modal-actions">
+            <button class="btn btn-primary cookie-save" data-translate="cookie.modal.save">Save preferences</button>
+        </div>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+    updatePageLanguage();
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+    });
+    modal.querySelector('.cookie-modal-close').addEventListener('click', () => overlay.remove());
+    modal.querySelector('.cookie-save').addEventListener('click', () => {
+        const consent = defaultCookieConsent();
+        consent.categories.functional = !!document.getElementById('cookie-functional')?.checked;
+        consent.categories.analytics = !!document.getElementById('cookie-analytics')?.checked;
+        consent.categories.marketing = !!document.getElementById('cookie-marketing')?.checked;
+        consent.consentGiven = true;
+        consent.timestamp = Date.now();
+        saveCookieConsent(consent);
+        applyCookiePreferences(consent.categories);
+        overlay.remove();
+        const banner = document.querySelector('.cookie-banner');
+        if (banner) banner.remove();
+        addFooterCookieSettingsLink();
+    });
+}
+
+function addFooterCookieSettingsLink() {
+    const footerLinks = document.querySelector('.footer-links');
+    if (!footerLinks) return;
+    if (!footerLinks.querySelector('.cookie-settings-link')) {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.className = 'cookie-settings-link';
+        link.setAttribute('data-translate', 'cookie.settingsLink');
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderCookieModal();
+        });
+        footerLinks.appendChild(link);
+        updatePageLanguage();
+    }
+}
+
+function applyCookiePreferences(categories) {
+    // Execute deferred scripts for allowed categories
+    const deferredScripts = document.querySelectorAll('script[type="text/plain"][data-cookie-category]');
+    deferredScripts.forEach((script) => {
+        const category = script.getAttribute('data-cookie-category');
+        if (category && categories[category]) {
+            const newScript = document.createElement('script');
+            // Copy attributes except type
+            [...script.attributes].forEach(attr => {
+                if (attr.name !== 'type') newScript.setAttribute(attr.name, attr.value);
+            });
+            newScript.text = script.textContent || '';
+            script.parentNode?.insertBefore(newScript, script);
+            script.remove();
+        }
+    });
+}
