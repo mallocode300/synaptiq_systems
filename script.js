@@ -452,10 +452,15 @@ function updateLanguageButton() {
 }
 
 function initializeLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
     const savedLanguage = localStorage.getItem('synaptiq-language');
     const browserLanguage = navigator.language.slice(0, 2);
     
-    if (savedLanguage && translations[savedLanguage]) {
+    if (urlLang && translations[urlLang]) {
+        currentLanguage = urlLang;
+        localStorage.setItem('synaptiq-language', urlLang);
+    } else if (savedLanguage && translations[savedLanguage]) {
         currentLanguage = savedLanguage;
     } else if (translations[browserLanguage]) {
         currentLanguage = browserLanguage;
