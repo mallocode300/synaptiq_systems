@@ -717,16 +717,33 @@ p {
 
 .n8n-form-embed {
     width: 100%;
-    min-height: 650px; /* tuned to actual form content to avoid large blank space */
-    height: 650px;
+    height: 720px;
+    min-height: 640px;
     border: 0;
     display: block;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+    .n8n-form-embed {
+        height: 820px;
+        min-height: 720px;
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .n8n-form-embed {
-        height: 650px; /* more vertical space for mobile */
-        min-height: 650px;
+        height: 980px;
+        min-height: 880px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .n8n-form-embed {
+        height: 1100px;
+        min-height: 1000px;
     }
 }
 
