@@ -109,7 +109,8 @@ const translations = {
         footer: {
             copyright: "© {year} Synaptiq. All rights reserved.",
             privacy: "Privacy Policy",
-            terms: "Terms of Service"
+            terms: "Terms of Service",
+            cookies: "Cookie Policy"
         },
         cookie: {
             banner: {
@@ -123,6 +124,8 @@ const translations = {
                 title: "Cookie preferences",
                 description: "Select which categories of cookies you consent to. You can change your choices at any time.",
                 save: "Save preferences",
+                exportLog: "Export consent log",
+                withdraw: "Withdraw consent",
                 categories: {
                     necessary: {
                         name: "Strictly necessary",
@@ -254,7 +257,8 @@ const translations = {
         footer: {
             copyright: "© {year} Synaptiq. Tous droits réservés.",
             privacy: "Politique de Confidentialité",
-            terms: "Conditions d'Utilisation"
+            terms: "Conditions d'Utilisation",
+            cookies: "Politique des cookies"
         },
         cookie: {
             banner: {
@@ -268,6 +272,8 @@ const translations = {
                 title: "Préférences de cookies",
                 description: "Sélectionnez les catégories de cookies auxquelles vous consentez. Vous pouvez modifier vos choix à tout moment.",
                 save: "Enregistrer les préférences",
+                exportLog: "Exporter le journal de consentement",
+                withdraw: "Retirer le consentement",
                 categories: {
                     necessary: {
                         name: "Strictement nécessaires",
@@ -733,6 +739,7 @@ function getSavedCookieConsent() {
 
 function saveCookieConsent(consent) {
     localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(consent));
+    appendConsentLog(consent);
 }
 
 function defaultCookieConsent() {
@@ -744,7 +751,8 @@ function defaultCookieConsent() {
             analytics: false,
             marketing: false
         },
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        version: '1.0'
     };
 }
 
@@ -865,7 +873,11 @@ function renderCookieModal() {
             </div>
             <p class="cookie-category-desc" data-translate="cookie.modal.categories.marketing.description">Used to deliver ads...</p>
         </div>
-        <div class="cookie-modal-actions">
+        <div class="cookie-modal-actions" style="gap: 0.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="display:flex; gap:0.5rem;">
+                <button class="btn btn-secondary cookie-export" data-translate="cookie.modal.exportLog">Export consent log</button>
+                <button class="btn btn-secondary cookie-withdraw" data-translate="cookie.modal.withdraw">Withdraw consent</button>
+            </div>
             <button class="btn btn-primary cookie-save" data-translate="cookie.modal.save">Save preferences</button>
         </div>
     `;
@@ -891,6 +903,18 @@ function renderCookieModal() {
         const banner = document.querySelector('.cookie-banner');
         if (banner) banner.remove();
         addFooterCookieSettingsLink();
+    });
+
+    // Export log button
+    modal.querySelector('.cookie-export').addEventListener('click', exportConsentLog);
+    // Withdraw button
+    modal.querySelector('.cookie-withdraw').addEventListener('click', () => {
+        const consent = defaultCookieConsent();
+        consent.consentGiven = false;
+        saveCookieConsent(consent);
+        applyCookiePreferences(consent.categories);
+        overlay.remove();
+        renderCookieBanner();
     });
 }
 
@@ -927,4 +951,41 @@ function applyCookiePreferences(categories) {
             script.remove();
         }
     });
+}
+
+// Consent logging utilities
+const CONSENT_LOG_KEY = 'synaptiq-cookie-consent-log';
+
+function appendConsentLog(entry) {
+    try {
+        const log = JSON.parse(localStorage.getItem(CONSENT_LOG_KEY) || '[]');
+        const record = {
+            timestamp: new Date().toISOString(),
+            language: currentLanguage,
+            categories: entry.categories,
+            consentGiven: entry.consentGiven,
+            version: entry.version || '1.0'
+        };
+        log.push(record);
+        localStorage.setItem(CONSENT_LOG_KEY, JSON.stringify(log));
+    } catch (e) {
+        // ignore
+    }
+}
+
+function exportConsentLog() {
+    try {
+        const log = localStorage.getItem(CONSENT_LOG_KEY) || '[]';
+        const blob = new Blob([log], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'consent-log.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    } catch (e) {
+        // ignore
+    }
 }

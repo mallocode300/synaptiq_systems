@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy - Synaptiq</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .legal-container { max-width: 900px; margin: 120px auto 80px; padding: 0 1.25rem; }
+    .legal-container h1 { margin-bottom: 1rem; }
+    .legal-container h2 { margin-top: 2rem; }
+    .cookie-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .cookie-table th, .cookie-table td { border: 1px solid #e5e7eb; padding: 0.75rem; text-align: left; }
+    .cookie-actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
+  </style>
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="synaptiq-logo.png" alt="Synaptiq" class="brand-logo"></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#services" class="nav-link">Services</a></li>
+        <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+    </div>
+  </nav>
+</head>
+<body>
+  <main class="legal-container">
+    <h1>Cookie Policy</h1>
+    <p>Last updated: 2025-08-07</p>
+    <p>This policy explains what cookies are, how we use them, and how you can manage your preferences.</p>
+
+    <h2>What are cookies?</h2>
+    <p>Cookies are small text files placed on your device to store data. They can be set by the website you visit (first-party) or by third parties.</p>
+
+    <h2>How we use cookies</h2>
+    <ul>
+      <li>Strictly necessary: basic site functionality (always active)</li>
+      <li>Functional: enhanced features and personalization</li>
+      <li>Analytics: usage metrics to improve our site</li>
+      <li>Marketing: personalized advertising</li>
+    </ul>
+
+    <div class="cookie-actions">
+      <button class="btn btn-secondary" onclick="renderCookieModal()">Manage preferences</button>
+      <button class="btn btn-secondary" onclick="exportConsentLog()">Export consent log</button>
+    </div>
+
+    <h2>Cookies in use</h2>
+    <table class="cookie-table">
+      <thead>
+        <tr><th>Name</th><th>Purpose</th><th>Provider</th><th>Expiry</th><th>Category</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>synaptiq-cookie-consent</td><td>Stores your cookie preferences</td><td>synaptiq.systems</td><td>12 months</td><td>Necessary</td></tr>
+        <tr><td>synaptiq-cookie-consent-log</td><td>Local audit trail of consent updates</td><td>synaptiq.systems</td><td>12 months</td><td>Necessary</td></tr>
+        <!-- Add third-party cookies here as you integrate them -->
+      </tbody>
+    </table>
+
+    <h2>Contact</h2>
+    <p>Questions? Email <a href="mailto:contact@synaptiq.systems">contact@synaptiq.systems</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p data-translate="footer.copyright">© 2025 Synaptiq. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html" data-translate="footer.privacy">Privacy Policy</a>
+          <a href="cookies.html" data-translate="footer.cookies">Cookie Policy</a>
+          <a href="terms.html" data-translate="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
