@@ -16,45 +16,52 @@
   </style>
   <script defer src="script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
         <a href="index.html"><img src="synaptiq-logo.png" alt="Synaptiq" class="brand-logo"></a>
       </div>
       <ul class="nav-menu">
-        <li><a href="index.html#home" class="nav-link">Home</a></li>
-        <li><a href="index.html#about" class="nav-link">About</a></li>
-        <li><a href="index.html#services" class="nav-link">Services</a></li>
-        <li><a href="index.html#blog" class="nav-link">Blog</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="index.html#home" class="nav-link" data-translate="nav.home">Home</a></li>
+        <li><a href="index.html#about" class="nav-link" data-translate="nav.about">About</a></li>
+        <li><a href="index.html#services" class="nav-link" data-translate="nav.services">Services</a></li>
+        <li><a href="index.html#blog" class="nav-link" data-translate="nav.blog">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+        <li class="nav-item language-switcher">
+          <button class="language-btn" id="languageToggle">
+            <span class="current-lang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <button class="language-option" data-lang="en">English</button>
+            <button class="language-option" data-lang="fr">Français</button>
+          </div>
+        </li>
       </ul>
       <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
     </div>
   </nav>
-</head>
-<body>
   <main class="legal-container">
-    <h1>Cookie Policy</h1>
-    <p>Last updated: 2025-08-07</p>
-    <p>This policy explains what cookies are, how we use them, and how you can manage your preferences.</p>
+    <h1 data-translate="legal.cookies.title">Cookie Policy</h1>
+    <p data-translate="legal.cookies.updated">Last updated: 2025-08-07</p>
+    <p data-translate="legal.cookies.whatBody">This policy explains ...</p>
 
-    <h2>What are cookies?</h2>
-    <p>Cookies are small text files placed on your device to store data. They can be set by the website you visit (first-party) or by third parties.</p>
+    <h2 data-translate="legal.cookies.whatTitle">What are cookies?</h2>
+    <p data-translate="legal.cookies.whatBody">Cookies are small text files...</p>
 
-    <h2>How we use cookies</h2>
-    <ul>
-      <li>Strictly necessary: basic site functionality (always active)</li>
-      <li>Functional: enhanced features and personalization</li>
-      <li>Analytics: usage metrics to improve our site</li>
-      <li>Marketing: personalized advertising</li>
-    </ul>
+    <h2 data-translate="legal.cookies.howTitle">How we use cookies</h2>
+    <div data-translate="legal.cookies.howList"></div>
 
     <div class="cookie-actions">
-      <button class="btn btn-secondary" onclick="renderCookieModal()">Manage preferences</button>
-      <button class="btn btn-secondary" onclick="exportConsentLog()">Export consent log</button>
+      <button class="btn btn-secondary" onclick="renderCookieModal()" data-translate="legal.cookies.manageButtons.manage">Manage preferences</button>
+      <button class="btn btn-secondary" onclick="exportConsentLog()" data-translate="legal.cookies.manageButtons.export">Export consent log</button>
     </div>
 
-    <h2>Cookies in use</h2>
+    <h2 data-translate="legal.cookies.tableTitle">Cookies in use</h2>
     <table class="cookie-table">
       <thead>
         <tr><th>Name</th><th>Purpose</th><th>Provider</th><th>Expiry</th><th>Category</th></tr>
@@ -66,8 +73,8 @@
       </tbody>
     </table>
 
-    <h2>Contact</h2>
-    <p>Questions? Email <a href="mailto:contact@synaptiq.systems">contact@synaptiq.systems</a>.</p>
+    <h2 data-translate="legal.cookies.contactTitle">Contact</h2>
+    <p data-translate="legal.cookies.contactBody">Questions? Email contact@synaptiq.systems.</p>
   </main>
 
   <footer class="footer">

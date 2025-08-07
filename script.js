@@ -146,6 +146,56 @@ const translations = {
                 }
             },
             settingsLink: "Cookie Settings"
+        },
+        legal: {
+            privacy: {
+                title: "Privacy Policy",
+                updated: "Last updated: 2025-08-07",
+                intro: "We are committed to protecting your personal data and privacy. This policy explains what data we collect, how we use it, and your rights under the GDPR.",
+                controllerTitle: "Data controller",
+                controllerBody: "Synaptiq Systems (\"Synaptiq\"). Contact: <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>",
+                whatTitle: "What data we collect",
+                whatList: "<ul><li>Contact data you submit via forms (name, email, company, message)</li><li>Service usage data (only if you consent to analytics cookies)</li></ul>",
+                whyTitle: "Why we collect it (legal bases)",
+                whyList: "<ul><li>To respond to your inquiries and provide services (contractual necessity)</li><li>To improve our website and services (consent for analytics)</li><li>To comply with legal obligations</li></ul>",
+                retentionTitle: "Data retention",
+                retentionBody: "We retain personal data only as long as necessary for the purposes described or as required by law.",
+                sharingTitle: "Sharing",
+                sharingBody: "We do not sell personal data. We may use processors (e.g., hosting providers) under GDPR-compliant DPAs.",
+                transfersTitle: "International transfers",
+                transfersBody: "If data is transferred outside the EU/EEA, we use appropriate safeguards (e.g., SCCs).",
+                rightsTitle: "Your rights",
+                rightsList: "<ul><li>Access, rectification, erasure, restriction, portability, objection</li><li>Withdraw consent at any time (see Cookie Settings in footer)</li><li>Lodge a complaint with your supervisory authority</li></ul>",
+                contactTitle: "Contact",
+                contactBody: "To exercise your rights, email <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            },
+            cookies: {
+                title: "Cookie Policy",
+                updated: "Last updated: 2025-08-07",
+                whatTitle: "What are cookies?",
+                whatBody: "Cookies are small text files placed on your device to store data. They can be set by the website you visit (first-party) or by third parties.",
+                howTitle: "How we use cookies",
+                howList: "<ul><li>Strictly necessary: basic site functionality (always active)</li><li>Functional: enhanced features and personalization</li><li>Analytics: usage metrics to improve our site</li><li>Marketing: personalized advertising</li></ul>",
+                manageButtons: { manage: "Manage preferences", export: "Export consent log" },
+                tableTitle: "Cookies in use",
+                contactTitle: "Contact",
+                contactBody: "Questions? Email <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            },
+            terms: {
+                title: "Terms of Service",
+                updated: "Last updated: 2025-08-07",
+                intro: "These Terms govern your use of the Synaptiq website and services.",
+                useTitle: "Use of the site",
+                useBody: "You agree to use the site lawfully and not to disrupt or attempt to gain unauthorized access.",
+                ipTitle: "Intellectual property",
+                ipBody: "All content is owned by Synaptiq unless otherwise stated. You may not reproduce without permission.",
+                disclaimerTitle: "Disclaimer",
+                disclaimerBody: "The site is provided \"as is\" without warranties. We are not liable for indirect or consequential damages.",
+                changesTitle: "Changes",
+                changesBody: "We may update these Terms. Continued use constitutes acceptance.",
+                contactTitle: "Contact",
+                contactBody: "For questions, contact <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            }
         }
     },
     fr: {
@@ -294,6 +344,56 @@ const translations = {
                 }
             },
             settingsLink: "Paramètres des cookies"
+        },
+        legal: {
+            privacy: {
+                title: "Politique de Confidentialité",
+                updated: "Dernière mise à jour : 2025-08-07",
+                intro: "Nous nous engageons à protéger vos données personnelles. Cette politique explique quelles données nous collectons, comment nous les utilisons et vos droits au titre du RGPD.",
+                controllerTitle: "Responsable du traitement",
+                controllerBody: "Synaptiq Systems (\"Synaptiq\"). Contact : <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>",
+                whatTitle: "Données que nous collectons",
+                whatList: "<ul><li>Données de contact que vous soumettez via les formulaires (nom, email, entreprise, message)</li><li>Données d'utilisation du service (uniquement si vous consentez aux cookies analytiques)</li></ul>",
+                whyTitle: "Pourquoi nous les collectons (bases légales)",
+                whyList: "<ul><li>Répondre à vos demandes et fournir nos services (nécessité contractuelle)</li><li>Améliorer notre site et nos services (consentement pour l'analyse)</li><li>Respecter nos obligations légales</li></ul>",
+                retentionTitle: "Conservation des données",
+                retentionBody: "Nous conservons les données personnelles uniquement pendant la durée nécessaire aux finalités décrites ou requises par la loi.",
+                sharingTitle: "Partage",
+                sharingBody: "Nous ne vendons pas de données personnelles. Nous pouvons utiliser des sous-traitants (hébergeurs, etc.) sous des accords conformes au RGPD.",
+                transfersTitle: "Transferts internationaux",
+                transfersBody: "Si des données sont transférées hors UE/EEE, nous utilisons des garanties appropriées (p. ex. CCT).",
+                rightsTitle: "Vos droits",
+                rightsList: "<ul><li>Accès, rectification, effacement, limitation, portabilité, opposition</li><li>Retirer votre consentement à tout moment (voir Paramètres des cookies en pied de page)</li><li>Déposer une plainte auprès de votre autorité de contrôle</li></ul>",
+                contactTitle: "Contact",
+                contactBody: "Pour exercer vos droits, écrivez à <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            },
+            cookies: {
+                title: "Politique des cookies",
+                updated: "Dernière mise à jour : 2025-08-07",
+                whatTitle: "Qu'est-ce qu'un cookie ?",
+                whatBody: "Un cookie est un petit fichier texte placé sur votre appareil pour stocker des informations. Ils peuvent être déposés par le site que vous visitez (première partie) ou par des tiers.",
+                howTitle: "Comment nous utilisons les cookies",
+                howList: "<ul><li>Strictement nécessaires : fonctionnalité de base du site (toujours actifs)</li><li>Fonctionnels : fonctionnalités avancées et personnalisation</li><li>Analytiques : mesures d'usage pour améliorer notre site</li><li>Marketing : publicité personnalisée</li></ul>",
+                manageButtons: { manage: "Gérer les préférences", export: "Exporter le journal de consentement" },
+                tableTitle: "Cookies utilisés",
+                contactTitle: "Contact",
+                contactBody: "Des questions ? Écrivez à <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            },
+            terms: {
+                title: "Conditions d'Utilisation",
+                updated: "Dernière mise à jour : 2025-08-07",
+                intro: "Ces conditions régissent votre utilisation du site et des services Synaptiq.",
+                useTitle: "Utilisation du site",
+                useBody: "Vous vous engagez à utiliser le site de manière licite et à ne pas tenter d'y accéder de manière non autorisée.",
+                ipTitle: "Propriété intellectuelle",
+                ipBody: "Tous les contenus appartiennent à Synaptiq sauf mention contraire. Toute reproduction est interdite sans autorisation.",
+                disclaimerTitle: "Avertissement",
+                disclaimerBody: "Le site est fourni \"en l'état\" sans garantie. Nous ne sommes pas responsables des dommages indirects ou consécutifs.",
+                changesTitle: "Modifications",
+                changesBody: "Nous pouvons mettre à jour ces conditions. La poursuite de l'utilisation vaut acceptation.",
+                contactTitle: "Contact",
+                contactBody: "Pour toute question, contactez <a href=\"mailto:contact@synaptiq.systems\">contact@synaptiq.systems</a>."
+            }
         }
     }
 };

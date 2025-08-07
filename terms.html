@@ -13,42 +13,54 @@
   </style>
   <script defer src="script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
         <a href="index.html"><img src="synaptiq-logo.png" alt="Synaptiq" class="brand-logo"></a>
       </div>
       <ul class="nav-menu">
-        <li><a href="index.html#home" class="nav-link">Home</a></li>
-        <li><a href="index.html#about" class="nav-link">About</a></li>
-        <li><a href="index.html#services" class="nav-link">Services</a></li>
-        <li><a href="index.html#blog" class="nav-link">Blog</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="index.html#home" class="nav-link" data-translate="nav.home">Home</a></li>
+        <li><a href="index.html#about" class="nav-link" data-translate="nav.about">About</a></li>
+        <li><a href="index.html#services" class="nav-link" data-translate="nav.services">Services</a></li>
+        <li><a href="index.html#blog" class="nav-link" data-translate="nav.blog">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+        <li class="nav-item language-switcher">
+          <button class="language-btn" id="languageToggle">
+            <span class="current-lang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <button class="language-option" data-lang="en">English</button>
+            <button class="language-option" data-lang="fr">Français</button>
+          </div>
+        </li>
       </ul>
       <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
     </div>
   </nav>
-</head>
-<body>
   <main class="legal-container">
-    <h1>Terms of Service</h1>
-    <p>Last updated: 2025-08-07</p>
-    <p>These Terms govern your use of the Synaptiq website and services.</p>
+    <h1 data-translate="legal.terms.title">Terms of Service</h1>
+    <p data-translate="legal.terms.updated">Last updated: 2025-08-07</p>
+    <p data-translate="legal.terms.intro">These Terms govern ...</p>
 
-    <h2>Use of the site</h2>
-    <p>You agree to use the site lawfully and not to disrupt or attempt to gain unauthorized access.</p>
+    <h2 data-translate="legal.terms.useTitle">Use of the site</h2>
+    <p data-translate="legal.terms.useBody">You agree to use the site ...</p>
 
-    <h2>Intellectual property</h2>
-    <p>All content is owned by Synaptiq unless otherwise stated. You may not reproduce without permission.</p>
+    <h2 data-translate="legal.terms.ipTitle">Intellectual property</h2>
+    <p data-translate="legal.terms.ipBody">All content is owned ...</p>
 
-    <h2>Disclaimer</h2>
-    <p>The site is provided “as is” without warranties. We are not liable for indirect or consequential damages.</p>
+    <h2 data-translate="legal.terms.disclaimerTitle">Disclaimer</h2>
+    <p data-translate="legal.terms.disclaimerBody">The site is provided ...</p>
 
-    <h2>Changes</h2>
-    <p>We may update these Terms. Continued use constitutes acceptance.</p>
+    <h2 data-translate="legal.terms.changesTitle">Changes</h2>
+    <p data-translate="legal.terms.changesBody">We may update these Terms ...</p>
 
-    <h2>Contact</h2>
-    <p>For questions, contact <a href="mailto:contact@synaptiq.systems">contact@synaptiq.systems</a>.</p>
+    <h2 data-translate="legal.terms.contactTitle">Contact</h2>
+    <p data-translate="legal.terms.contactBody">For questions, contact ...</p>
   </main>
 
   <footer class="footer">

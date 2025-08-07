@@ -13,68 +13,64 @@
     .legal-container p, .legal-container li { color: #333; }
   </style>
   <script defer src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // ensure navbar styling present
-    });
-  </script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
         <a href="index.html"><img src="synaptiq-logo.png" alt="Synaptiq" class="brand-logo"></a>
       </div>
       <ul class="nav-menu">
-        <li><a href="index.html#home" class="nav-link">Home</a></li>
-        <li><a href="index.html#about" class="nav-link">About</a></li>
-        <li><a href="index.html#services" class="nav-link">Services</a></li>
-        <li><a href="index.html#blog" class="nav-link">Blog</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="index.html#home" class="nav-link" data-translate="nav.home">Home</a></li>
+        <li><a href="index.html#about" class="nav-link" data-translate="nav.about">About</a></li>
+        <li><a href="index.html#services" class="nav-link" data-translate="nav.services">Services</a></li>
+        <li><a href="index.html#blog" class="nav-link" data-translate="nav.blog">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+        <li class="nav-item language-switcher">
+          <button class="language-btn" id="languageToggle">
+            <span class="current-lang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <button class="language-option" data-lang="en">English</button>
+            <button class="language-option" data-lang="fr">Français</button>
+          </div>
+        </li>
       </ul>
       <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
     </div>
   </nav>
-</head>
-<body>
   <main class="legal-container">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: 2025-08-07</p>
-    <p>We are committed to protecting your personal data and privacy. This policy explains what data we collect, how we use it, and your rights under the GDPR.</p>
+    <h1 data-translate="legal.privacy.title">Privacy Policy</h1>
+    <p data-translate="legal.privacy.updated">Last updated: 2025-08-07</p>
+    <p data-translate="legal.privacy.intro">We are committed to protecting your personal data...</p>
 
-    <h2>Data controller</h2>
-    <p>Synaptiq Systems ("Synaptiq"). Contact: <a href="mailto:contact@synaptiq.systems">contact@synaptiq.systems</a></p>
+    <h2 data-translate="legal.privacy.controllerTitle">Data controller</h2>
+    <p data-translate="legal.privacy.controllerBody">Synaptiq Systems ...</p>
 
-    <h2>What data we collect</h2>
-    <ul>
-      <li>Contact data you submit via forms (name, email, company, message)</li>
-      <li>Service usage data (only if you consent to analytics cookies)</li>
-    </ul>
+    <h2 data-translate="legal.privacy.whatTitle">What data we collect</h2>
+    <div data-translate="legal.privacy.whatList"></div>
 
-    <h2>Why we collect it (legal bases)</h2>
-    <ul>
-      <li>To respond to your inquiries and provide services (contractual necessity)</li>
-      <li>To improve our website and services (consent for analytics)</li>
-      <li>To comply with legal obligations</li>
-    </ul>
+    <h2 data-translate="legal.privacy.whyTitle">Why we collect it (legal bases)</h2>
+    <div data-translate="legal.privacy.whyList"></div>
 
-    <h2>Data retention</h2>
-    <p>We retain personal data only as long as necessary for the purposes described or as required by law.</p>
+    <h2 data-translate="legal.privacy.retentionTitle">Data retention</h2>
+    <p data-translate="legal.privacy.retentionBody">We retain personal data...</p>
 
-    <h2>Sharing</h2>
-    <p>We do not sell personal data. We may use processors (e.g., hosting providers) under GDPR-compliant DPAs.</p>
+    <h2 data-translate="legal.privacy.sharingTitle">Sharing</h2>
+    <p data-translate="legal.privacy.sharingBody">We do not sell personal data...</p>
 
-    <h2>International transfers</h2>
-    <p>If data is transferred outside the EU/EEA, we use appropriate safeguards (e.g., SCCs).</p>
+    <h2 data-translate="legal.privacy.transfersTitle">International transfers</h2>
+    <p data-translate="legal.privacy.transfersBody">If data is transferred...</p>
 
-    <h2>Your rights</h2>
-    <ul>
-      <li>Access, rectification, erasure, restriction, portability, objection</li>
-      <li>Withdraw consent at any time (see Cookie Settings in footer)</li>
-      <li>Lodge a complaint with your supervisory authority</li>
-    </ul>
+    <h2 data-translate="legal.privacy.rightsTitle">Your rights</h2>
+    <div data-translate="legal.privacy.rightsList"></div>
 
-    <h2>Contact</h2>
-    <p>To exercise your rights, email <a href="mailto:contact@synaptiq.systems">contact@synaptiq.systems</a>.</p>
+    <h2 data-translate="legal.privacy.contactTitle">Contact</h2>
+    <p data-translate="legal.privacy.contactBody">To exercise your rights...</p>
   </main>
 
   <footer class="footer">
