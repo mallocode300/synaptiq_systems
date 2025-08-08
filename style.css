@@ -734,16 +734,16 @@ p {
 /* Mobile */
 @media (max-width: 768px) {
     .n8n-form-embed {
-        height: 980px;
-        min-height: 880px;
+        height: 1200px; /* ensure form is fully visible on iPhone smaller viewports */
+        min-height: 1100px;
     }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
     .n8n-form-embed {
-        height: 1100px;
-        min-height: 1000px;
+        height: 1300px;
+        min-height: 1200px;
     }
 }
 
@@ -1010,6 +1010,8 @@ input:checked + .slider:before {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-container { height: 58px; }
+    .brand-logo { height: 28px; max-height: 28px; }
     /* Navigation */
     .nav-menu {
         position: fixed;
@@ -1146,9 +1148,7 @@ input:checked + .slider:before {
         gap: 2rem;
     }
 
-    .contact-form {
-        padding: 2rem;
-    }
+    .contact-form { padding: 1rem 0; }
 
     /* Footer */
     .footer-content {
