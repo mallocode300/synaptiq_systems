@@ -818,6 +818,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cookie consent (RGPD)
     initializeCookieConsent();
+
+    // Mobile-specific layout adjustments (iPhone friendly)
+    function applyMobileOptimizations() {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const contactIframe = document.querySelector('.contact .n8n-form-embed');
+        const contactCta = document.querySelector('.mobile-contact-cta');
+        if (isMobile) {
+            if (contactIframe) contactIframe.style.display = 'none';
+            if (contactCta) contactCta.style.display = 'inline-block';
+        } else {
+            if (contactCta) contactCta.style.display = 'none';
+            if (contactIframe) contactIframe.style.display = 'block';
+        }
+    }
+    applyMobileOptimizations();
+    window.addEventListener('resize', applyMobileOptimizations);
 });
 
 // Add CSS for active nav link

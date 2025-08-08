@@ -1186,11 +1186,9 @@ input:checked + .slider:before {
         padding: 0 1rem;
     }
 
-    .nav-container {
-        padding: 0 0.75rem;
-        height: 50px;
-    }
-    .brand-logo { height: 20px; max-height: 20px; }
+    .nav-container { padding: 0 0.75rem; height: 46px; }
+    .brand-logo { height: 18px; max-height: 18px; }
+    .brand-text { font-size: 1rem; }
 
     .hero-container {
         padding: 0 1rem;
@@ -1228,9 +1226,8 @@ input:checked + .slider:before {
         padding: 1.5rem;
     }
 
-    .contact-form {
-        padding: 0.5rem 0;
-    }
+    .contact-form { padding: 0.25rem 0; }
+    .mobile-contact-cta.btn { width: 100%; }
 
     .blog-intro h3 {
         font-size: 1.75rem;
