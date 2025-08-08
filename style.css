@@ -726,6 +726,7 @@ p {
 
 /* Mobile contact CTA: hidden by default; shown only on mobile */
 .mobile-contact-cta { display: none; margin-bottom: 1rem; }
+.mobile-contact-cta-desktop { display: none; }
 
 .n8n-form-embed {
     width: 100%;
@@ -753,6 +754,11 @@ p {
         height: 1600px; /* expanded to ensure full form is visible on most phones */
         min-height: 1500px;
     }
+}
+
+/* Ensure CTA hidden on desktop sizes */
+@media (min-width: 769px) {
+    .mobile-contact-cta { display: none !important; }
 }
 
 /* Small mobile */
@@ -1029,8 +1035,8 @@ input:checked + .slider:before {
     .nav-container { height: 54px; }
     .brand-logo { height: 22px; max-height: 22px; }
     /* On mobile, show text brand and hide image logo */
-    .brand-logo { display: none; }
-    .brand-text { display: inline-block; font-size: 1.1rem; }
+    .brand-logo { display: none !important; }
+    .brand-text { display: inline-block !important; font-size: 1.1rem; }
     /* Navigation */
     .nav-menu {
         position: fixed;
