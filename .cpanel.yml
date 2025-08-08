@@ -1,0 +1,19 @@
+---
+# cPanel Git Deployment config
+# Uses $DEPLOYPATH set by cPanel when you configure deployment in the UI
+# It syncs the repository contents to your deployment path (e.g., public_html)
+
+deployment:
+  tasks:
+    - echo "Deploying commit: $(git rev-parse --short HEAD) to $DEPLOYPATH"
+    - test -n "$DEPLOYPATH" || { echo "DEPLOYPATH is not set"; exit 1; }
+    - /bin/rsync -av --delete \
+        --exclude ".git" \
+        --exclude ".github" \
+        --exclude ".cpanel.yml" \
+        --exclude ".vscode" \
+        --exclude "node_modules" \
+        ./ "$DEPLOYPATH/"
+    - echo "Deployment finished."
+
+
