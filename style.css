@@ -715,6 +715,9 @@ p {
     border: none;
 }
 
+/* Mobile contact CTA: hidden by default; shown only on mobile */
+.mobile-contact-cta { display: none; margin-bottom: 1rem; }
+
 .n8n-form-embed {
     width: 100%;
     height: 720px;
@@ -733,6 +736,9 @@ p {
 
 /* Mobile */
 @media (max-width: 768px) {
+    .mobile-contact-cta { display: inline-block; }
+    /* Hide inline iframe on mobile to avoid cropping; use separate page */
+    .n8n-form-embed { display: none; }
     .n8n-form-embed {
         height: 1600px; /* expanded to ensure full form is visible on most phones */
         min-height: 1500px;

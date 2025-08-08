@@ -88,6 +88,7 @@ const translations = {
             subtitle: "Ready to transform your business with AI? Let's discuss your needs.",
             heading: "Connect to Tomorrow",
             description: "Synaptiq is more than a consulting firm or a tech vendor; we are your dedicated partner in innovation. We believe in creating systems that amplify human potential through intelligent technology, unlocking new levels of creativity and market leadership.",
+            openForm: "Open contact form",
             email: {
                 label: "Email:"
             },
@@ -286,6 +287,7 @@ const translations = {
             subtitle: "Prêt à transformer votre entreprise avec l'IA ? Discutons de vos besoins.",
             heading: "Connecter à Demain",
             description: "Synaptiq est plus qu'une firme de conseil ou un fournisseur tech ; nous sommes votre partenaire dédié en innovation. Nous croyons en la création de systèmes qui amplifient le potentiel humain grâce à la technologie intelligente, débloquant de nouveaux niveaux de créativité et de leadership de marché.",
+            openForm: "Ouvrir le formulaire de contact",
             email: {
                 label: "Email :"
             },
