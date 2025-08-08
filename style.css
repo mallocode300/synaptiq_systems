@@ -147,6 +147,15 @@ p {
     display: inline-block;
 }
 
+.brand-text {
+    display: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    color: #035096;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -1018,6 +1027,9 @@ input:checked + .slider:before {
 @media (max-width: 768px) {
     .nav-container { height: 54px; }
     .brand-logo { height: 22px; max-height: 22px; }
+    /* On mobile, show text brand and hide image logo */
+    .brand-logo { display: none; }
+    .brand-text { display: inline-block; font-size: 1.1rem; }
     /* Navigation */
     .nav-menu {
         position: fixed;
