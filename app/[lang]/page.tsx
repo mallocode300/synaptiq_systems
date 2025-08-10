@@ -154,15 +154,20 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">{t.insights.title}</h2>
             <p className="text-black/70 mb-6 max-w-3xl">{t.insights.text}</p>
-            <a
-              href="https://medium.com/@mallocode300"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 hover:bg-black/[.03]"
-            >
-              {t.insights.cta}
-              <span aria-hidden>→</span>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://medium.com/@mallocode300"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 hover:bg-black/[.03]"
+              >
+                {t.insights.cta}
+                <span aria-hidden>→</span>
+              </a>
+              <a href={`/${lang}/insights`} className="text-sm underline hover:no-underline">
+                {lang === 'fr' ? 'Derniers articles' : 'Latest posts'}
+              </a>
+            </div>
           </Reveal>
         </section>
 
