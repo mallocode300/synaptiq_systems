@@ -1,8 +1,5 @@
 {
-  "regions": ["fra1"],
-  "projectSettings": {
-    "framework": "nextjs"
-  }
+  "regions": ["fra1"]
 }
 
 
