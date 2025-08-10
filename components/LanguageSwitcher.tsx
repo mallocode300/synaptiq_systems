@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useTransition } from "react";
 
+import type { Route } from "next";
 const locales = ["en", "fr"] as const;
 type Locale = (typeof locales)[number];
 
@@ -30,7 +31,7 @@ export default function LanguageSwitcher() {
     } else {
       parts.splice(1, 0, locale);
     }
-    const next = parts.join("/") || "/";
+    const next = (parts.join("/") || "/") as Route;
     setLocaleCookie(locale);
     startTransition(() => router.push(next));
   }
