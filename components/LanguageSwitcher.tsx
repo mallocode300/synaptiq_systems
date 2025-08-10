@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useTransition } from "react";
 
 const locales = ["en", "fr"] as const;
+type Locale = (typeof locales)[number];
 
 function setLocaleCookie(locale: string) {
   try {
@@ -16,15 +17,15 @@ export default function LanguageSwitcher() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const current = useMemo(() => {
-    const first = pathname?.split("/")[1] || "";
-    return locales.includes(first as any) ? first : "en";
+  const current: Locale = useMemo(() => {
+    const first = (pathname?.split("/")[1] || "") as Locale | "";
+    return (locales as readonly string[]).includes(first) ? (first as Locale) : "en";
   }, [pathname]);
 
   function switchTo(locale: string) {
     if (!pathname) return;
     const parts = pathname.split("/");
-    if (locales.includes(parts[1] as any)) {
+    if ((locales as readonly string[]).includes(parts[1] as string)) {
       parts[1] = locale;
     } else {
       parts.splice(1, 0, locale);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { COOKIE_CONSENT_NAME, defaultConsent, type ConsentPreferences, serializeConsent } from "@/lib/consent";
 
 function getCookie(name: string): string | null {

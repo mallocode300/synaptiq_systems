@@ -5,7 +5,7 @@ import { canUseAnalytics, onConsentChange } from "@/lib/analytics";
 
 declare global {
   interface Window {
-    plausible?: (event: string, opts?: { props?: Record<string, any> }) => void;
+    plausible?: (event: string, opts?: { props?: Record<string, unknown> }) => void;
   }
 }
 
