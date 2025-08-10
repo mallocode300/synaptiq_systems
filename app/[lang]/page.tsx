@@ -252,6 +252,20 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
             <a href={`/${lang}/terms`} className="hover:underline">
               {lang === "fr" ? "Conditions" : "Terms"}
             </a>
+            <button
+
+              className="hover:underline"
+              onClick={() => {
+                if (typeof window === 'undefined') return;
+                // Reopen the cookie banner by clearing consent and dispatching change
+                document.cookie = `COOKIE_CONSENT=; path=/; max-age=0`;
+                window.dispatchEvent(new Event('cookie-consent-change'));
+                // Force re-render by navigating to cookies page or toggling hash
+                window.location.hash = '#cookie-settings';
+              }}
+            >
+              {lang === 'fr' ? 'Paramètres des cookies' : 'Cookie settings'}
+            </button>
           </div>
         </div>
       </footer>

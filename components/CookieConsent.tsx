@@ -66,6 +66,10 @@ export default function CookieConsent() {
             We use necessary cookies to make our site work. With your consent, we also use analytics and marketing cookies to
             understand usage and improve our services. You can change your preferences at any time.
           </p>
+          <p className="text-xs text-black/60 mb-2">
+            <a href="/en/cookies" className="underline hover:no-underline mr-3">Cookie Policy</a>
+            <a href="/en/privacy" className="underline hover:no-underline">Privacy</a>
+          </p>
 
           <div className="grid md:grid-cols-3 gap-4 mb-4">
             <fieldset className="p-3 rounded-lg border border-black/10">
