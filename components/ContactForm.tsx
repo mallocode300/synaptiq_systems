@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [startTs] = useState<number>(() => Date.now());
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -13,6 +14,14 @@ export default function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    // Honeypot
+    if (formData.get("website")) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+    // Time-to-fill
+    formData.append("ttf_ms", String(Date.now() - startTs));
 
     try {
       const res = await fetch("/api/contact", {
@@ -29,7 +38,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+    <form id="contact-form" onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-sm font-medium">
           Name
@@ -77,6 +86,8 @@ export default function ContactForm() {
           className="border border-black/10 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#035096]/30"
         />
       </div>
+      {/* Honeypot */}
+      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
       <div className="md:col-span-2 flex items-center gap-4">
         <button
           type="submit"

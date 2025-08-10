@@ -58,7 +58,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
             <h2 className="text-2xl md:text-3xl font-semibold mb-8">{t.services.title}</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {t.services.items.map((s, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-black/5">
+                <a href={`/${lang}/services/${s.slug}`} key={i} className="p-6 rounded-2xl border border-black/5 block hover:border-[#035096]/30">
                   <h3 className="text-lg font-semibold mb-2">{s.title}</h3>
                   <p className="text-black/70 mb-3">{s.desc}</p>
                   <ul className="list-disc list-inside text-black/70 space-y-1">
@@ -66,7 +66,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
                       <li key={j}>{b}</li>
                     ))}
                   </ul>
-                </div>
+                </a>
               ))}
             </div>
           </Reveal>
@@ -117,6 +117,41 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
               <Image src="/logos/make.svg" alt="Make" width={70} height={26} />
               <Image src="/logos/n8n.svg" alt="n8n" width={70} height={26} />
               <Image src="/logos/retool.svg" alt="Retool" width={90} height={26} />
+            </div>
+          </Reveal>
+        </section>
+
+        {/* Testimonials */}
+        <section className="container py-16 md:py-24">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8">{lang === 'fr' ? 'Témoignages' : 'Testimonials'}</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1,2,3].map((i) => (
+                <blockquote key={i} className="p-6 rounded-2xl border border-black/5 text-black/80">
+                  <p>“{lang === 'fr' ? 'Une exécution rapide et des résultats mesurables.' : 'Swift execution with measurable results.'}”</p>
+                  <footer className="mt-3 text-sm text-black/60">{lang === 'fr' ? 'Directeur des opérations' : 'Operations Director'}</footer>
+                </blockquote>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* Industries */}
+        <section className="container py-16 md:py-24">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8">{lang === 'fr' ? 'Secteurs' : 'Industries'}</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { t: lang === 'fr' ? 'Finance' : 'Finance' },
+                { t: lang === 'fr' ? 'E‑commerce' : 'E‑commerce' },
+                { t: lang === 'fr' ? 'Santé' : 'Healthcare' },
+                { t: lang === 'fr' ? 'PME' : 'SMB' },
+              ].map((x, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-black/5">
+                  <h3 className="font-semibold mb-2">{x.t}</h3>
+                  <p className="text-black/70 text-sm">{lang === 'fr' ? 'Exemples d’impact: coûts ↓, productivité ↑.' : 'Example impact: lower costs, higher productivity.'}</p>
+                </div>
+              ))}
             </div>
           </Reveal>
         </section>
