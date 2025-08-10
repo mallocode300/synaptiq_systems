@@ -9,6 +9,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
         {isFr ? "Politique de confidentialité" : "Privacy Policy"}
       </h1>
       <div className="prose max-w-none text-black/80">
+        <p className="text-sm text-black/60">{isFr ? "Dernière mise à jour" : "Last updated"}: 2025-08-10</p>
         <p>
           {isFr
             ? "Nous respectons votre vie privée. Cette page décrit comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD."
@@ -43,6 +44,11 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
           {isFr
             ? "Voir la bannière de consentement pour la gestion des cookies nécessaires, analytiques et marketing."
             : "See the consent banner for managing necessary, analytics, and marketing cookies."}
+        </p>
+        <p>
+          {isFr
+            ? "Vous pouvez modifier vos préférences à tout moment via le lien ‘Paramètres des cookies’ en pied de page."
+            : "You can change your preferences anytime using the ‘Cookie settings’ link in the footer."}
         </p>
         <h2>{isFr ? "Contact" : "Contact"}</h2>
         <p>

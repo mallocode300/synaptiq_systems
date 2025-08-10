@@ -9,6 +9,7 @@ export default async function TermsPage({ params }: { params: Promise<{ lang: Lo
         {isFr ? "Conditions d’utilisation" : "Terms of Service"}
       </h1>
       <div className="prose max-w-none text-black/80">
+        <p className="text-sm text-black/60">{isFr ? "Dernière mise à jour" : "Last updated"}: 2025-08-10</p>
         <p>
           {isFr
             ? "Ces conditions régissent l’utilisation du site et des services proposés par Synaptiq. En accédant à ce site, vous acceptez ces conditions."
