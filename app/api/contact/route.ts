@@ -1,19 +1,23 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
+
+const schema = z.object({
+  name: z.string().min(2).max(100),
+  company: z.string().max(150).optional().or(z.literal("")),
+  email: z.string().email().max(200),
+  message: z.string().min(10).max(5000),
+  ttf_ms: z.string().optional(),
+});
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const name = String(formData.get("name") || "").trim();
-    const company = String(formData.get("company") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { ok: false, error: "Missing required fields" },
-        { status: 400 }
-      );
+    const raw = Object.fromEntries(formData.entries());
+    const parsed = schema.safeParse(raw);
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: "Invalid input" }, { status: 400 });
     }
+    const { name, company = "", email, message, ttf_ms } = parsed.data;
 
     const webhookUrl = process.env.N8N_WEBHOOK_URL;
     if (!webhookUrl) {
@@ -31,6 +35,7 @@ export async function POST(request: Request) {
     params.set("message", message);
     params.set("source", "synaptiq-website");
     params.set("submittedAt", new Date().toISOString());
+    if (ttf_ms) params.set("ttf_ms", ttf_ms);
 
     const n8nResponse = await fetch(webhookUrl, {
       method: "POST",

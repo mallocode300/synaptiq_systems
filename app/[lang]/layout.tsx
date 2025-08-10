@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import AnalyticsPlausible from "@/components/AnalyticsPlausible";
 import AnalyticsEvents from "@/components/AnalyticsEvents";
+import type { Metadata } from "next";
 import CookieConsent from "@/components/CookieConsent";
 import { locales, Locale } from "@/i18n/config";
 
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const base = "https://synaptiq.systems";
   const url = `${base}/${lang}`;
   return {
+    metadataBase: new URL(base),
     alternates: {
       canonical: url,
       languages: {
@@ -26,6 +28,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     openGraph: {
       url,
       locale: lang,
+    },
+    other: {
+      "hreflang": lang,
     },
   };
 }
