@@ -2,6 +2,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
 import { Locale } from "@/i18n/config";
 import { en } from "@/i18n/dictionaries/en";
 import { fr } from "@/i18n/dictionaries/fr";
@@ -220,7 +221,13 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         <section id="contact" className="container py-16 md:py-24">
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-semibold mb-8">{t.contact.title}</h2>
-            <ContactForm />
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <ContactForm />
+              <div>
+                <h3 className="text-lg font-semibold mb-3">{lang === 'fr' ? 'Réserver un créneau' : 'Book a time'}</h3>
+                <CalendlyEmbed />
+              </div>
+            </div>
           </Reveal>
         </section>
       </main>
