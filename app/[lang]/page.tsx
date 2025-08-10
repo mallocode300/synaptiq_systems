@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 import { Locale } from "@/i18n/config";
 import { en } from "@/i18n/dictionaries/en";
 import { fr } from "@/i18n/dictionaries/fr";
@@ -252,20 +253,10 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
             <a href={`/${lang}/terms`} className="hover:underline">
               {lang === "fr" ? "Conditions" : "Terms"}
             </a>
-            <button
-
+            <CookieSettingsButton
               className="hover:underline"
-              onClick={() => {
-                if (typeof window === 'undefined') return;
-                // Reopen the cookie banner by clearing consent and dispatching change
-                document.cookie = `COOKIE_CONSENT=; path=/; max-age=0`;
-                window.dispatchEvent(new Event('cookie-consent-change'));
-                // Force re-render by navigating to cookies page or toggling hash
-                window.location.hash = '#cookie-settings';
-              }}
-            >
-              {lang === 'fr' ? 'Paramètres des cookies' : 'Cookie settings'}
-            </button>
+              label={lang === 'fr' ? 'Paramètres des cookies' : 'Cookie settings'}
+            />
           </div>
         </div>
       </footer>
