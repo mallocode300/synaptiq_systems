@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import AnalyticsPlausible from "@/components/AnalyticsPlausible";
 import AnalyticsEvents from "@/components/AnalyticsEvents";
