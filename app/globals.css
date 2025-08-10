@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --primary: #035096; /* Medium Electric Blue */
+  --font-montserrat: var(--font-montserrat);
+  --font-lato: var(--font-lato);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lato), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+}
+
+/* Utilities */
+.container {
+  @apply max-w-6xl mx-auto px-6;
+}
+
+/* Smooth anchor offset when using sticky header */
+section {
+  scroll-margin-top: 88px; /* header height + spacing */
+}
