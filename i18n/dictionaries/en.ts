@@ -115,6 +115,11 @@ export const en = {
   faq: {
     title: "FAQ",
   },
+  insights: {
+    title: "Insights",
+    text: "Articles on AI and automation — strategy, integrations, and real-world playbooks.",
+    cta: "Read on Medium",
+  },
   contact: {
     title: "Let’s Architect Your Success",
     name: "Name",

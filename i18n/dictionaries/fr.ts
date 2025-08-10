@@ -115,6 +115,11 @@ export const fr = {
   faq: {
     title: "FAQ",
   },
+  insights: {
+    title: "Analyses",
+    text: "Articles sur l’IA et l’automatisation — stratégie, intégrations et cas concrets.",
+    cta: "Lire sur Medium",
+  },
   contact: {
     title: "Architecturons votre succès",
     name: "Nom",

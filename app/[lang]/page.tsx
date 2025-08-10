@@ -149,6 +149,23 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
           </Reveal>
         </section>
 
+        {/* Insights / Medium */}
+        <section className="container py-16 md:py-24">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">{t.insights.title}</h2>
+            <p className="text-black/70 mb-6 max-w-3xl">{t.insights.text}</p>
+            <a
+              href="https://medium.com/@mallocode300"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 px-5 py-3 hover:bg-black/[.03]"
+            >
+              {t.insights.cta}
+              <span aria-hidden>→</span>
+            </a>
+          </Reveal>
+        </section>
+
         {/* Case studies */}
         <section id="case-studies" className="container py-16 md:py-24">
           <Reveal>
