@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
+import Testimonials from "@/components/Testimonials";
 import { Locale } from "@/i18n/config";
 import { en } from "@/i18n/dictionaries/en";
 import { fr } from "@/i18n/dictionaries/fr";
@@ -124,19 +125,9 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         </section>
 
         {/* Testimonials */}
-        <section className="container py-16 md:py-24">
-          <Reveal>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-8">{lang === 'fr' ? 'Témoignages' : 'Testimonials'}</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[1,2,3].map((i) => (
-                <blockquote key={i} className="p-6 rounded-2xl border border-black/5 text-black/80">
-                  <p>“{lang === 'fr' ? 'Une exécution rapide et des résultats mesurables.' : 'Swift execution with measurable results.'}”</p>
-                  <footer className="mt-3 text-sm text-black/60">{lang === 'fr' ? 'Directeur des opérations' : 'Operations Director'}</footer>
-                </blockquote>
-              ))}
-            </div>
-          </Reveal>
-        </section>
+        <Reveal>
+          <Testimonials lang={lang} />
+        </Reveal>
 
         {/* Industries */}
         <section className="container py-16 md:py-24">
