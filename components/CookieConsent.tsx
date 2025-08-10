@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { COOKIE_CONSENT_NAME, defaultConsent, type ConsentPreferences, serializeConsent } from "@/lib/consent";
 
 function getCookie(name: string): string | null {
@@ -67,8 +68,8 @@ export default function CookieConsent() {
             understand usage and improve our services. You can change your preferences at any time.
           </p>
           <p className="text-xs text-black/60 mb-2">
-            <a href="/en/cookies" className="underline hover:no-underline mr-3">Cookie Policy</a>
-            <a href="/en/privacy" className="underline hover:no-underline">Privacy</a>
+            <Link href="/en/cookies" className="underline hover:no-underline mr-3">Cookie Policy</Link>
+            <Link href="/en/privacy" className="underline hover:no-underline">Privacy</Link>
           </p>
 
           <div className="grid md:grid-cols-3 gap-4 mb-4">
