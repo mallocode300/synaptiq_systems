@@ -5,41 +5,56 @@ export default async function TermsPage({ params }: { params: Promise<{ lang: Lo
   const isFr = lang === "fr";
   return (
     <div className="container py-16 md:py-24">
-      <h1 className="text-2xl md:text-3xl font-semibold mb-6">
-        {isFr ? "Conditions d’utilisation" : "Terms of Service"}
-      </h1>
-      <div className="prose max-w-none text-black/80">
-        <p className="text-sm text-black/60">{isFr ? "Dernière mise à jour" : "Last updated"}: 2025-08-10</p>
+      <header className="mb-8 md:mb-10">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+          {isFr ? "Conditions d’utilisation" : "Terms of Service"}
+        </h1>
+        <p className="text-sm text-black/60 mt-2">{isFr ? "Dernière mise à jour" : "Last updated"}: 2025-08-10</p>
+      </header>
+
+      <article className="max-w-3xl bg-white rounded-2xl border border-black/5 shadow-sm p-6 md:p-8 text-black/80 leading-relaxed space-y-6">
         <p>
           {isFr
             ? "Ces conditions régissent l’utilisation du site et des services proposés par Synaptiq. En accédant à ce site, vous acceptez ces conditions."
             : "These terms govern your use of the site and services provided by Synaptiq. By accessing this site, you agree to these terms."}
         </p>
-        <h2>{isFr ? "Utilisation du service" : "Use of Service"}</h2>
-        <p>
-          {isFr
-            ? "Vous acceptez d’utiliser le site conformément aux lois applicables et de ne pas nuire à son bon fonctionnement."
-            : "You agree to use the site in compliance with applicable laws and not to interfere with its normal operation."}
-        </p>
-        <h2>{isFr ? "Limitation de responsabilité" : "Limitation of Liability"}</h2>
-        <p>
-          {isFr
-            ? "Dans la mesure permise par la loi, Synaptiq ne peut être tenu responsable des dommages indirects ou imprévus."
-            : "To the extent permitted by law, Synaptiq is not liable for indirect or unforeseeable damages."}
-        </p>
-        <h2>{isFr ? "Modification" : "Changes"}</h2>
-        <p>
-          {isFr
-            ? "Nous pouvons mettre à jour ces conditions à tout moment. Les modifications s’appliquent dès leur publication."
-            : "We may update these terms at any time. Changes apply upon publication."}
-        </p>
-        <h2>{isFr ? "Contact" : "Contact"}</h2>
-        <p>
-          {isFr
-            ? "Pour toute question concernant ces conditions, veuillez nous contacter."
-            : "For any questions regarding these terms, please contact us."}
-        </p>
-      </div>
+
+        <section>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">{isFr ? "Utilisation du service" : "Use of Service"}</h2>
+          <p>
+            {isFr
+              ? "Vous acceptez d’utiliser le site conformément aux lois applicables et de ne pas nuire à son bon fonctionnement."
+              : "You agree to use the site in compliance with applicable laws and not to interfere with its normal operation."}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">{isFr ? "Limitation de responsabilité" : "Limitation of Liability"}</h2>
+          <p>
+            {isFr
+              ? "Dans la mesure permise par la loi, Synaptiq ne peut être tenu responsable des dommages indirects ou imprévus."
+              : "To the extent permitted by law, Synaptiq is not liable for indirect or unforeseeable damages."}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">{isFr ? "Modification" : "Changes"}</h2>
+          <p>
+            {isFr
+              ? "Nous pouvons mettre à jour ces conditions à tout moment. Les modifications s’appliquent dès leur publication."
+              : "We may update these terms at any time. Changes apply upon publication."}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">{isFr ? "Contact" : "Contact"}</h2>
+          <p>
+            {isFr
+              ? "Pour toute question concernant ces conditions, veuillez nous contacter."
+              : "For any questions regarding these terms, please contact us."}
+          </p>
+        </section>
+      </article>
     </div>
   );
 }
