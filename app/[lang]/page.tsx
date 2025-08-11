@@ -119,16 +119,13 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
                   className="group p-6 rounded-2xl border border-black/5 hover:border-[#035096]/30 bg-white/70 backdrop-blur-sm transition shadow-sm hover:shadow-md flex items-center justify-center"
                   aria-label={tool.name}
                 >
-                  <div className="flex flex-col items-center gap-3">
-                    <Image
-                      src={tool.logo}
-                      alt={tool.name}
-                      width={110}
-                      height={30}
-                      className="opacity-90 group-hover:opacity-100 transition"
-                    />
-                    <span className="text-sm text-black/60 group-hover:text-black/80">{tool.name}</span>
-                  </div>
+                  <Image
+                    src={tool.logo}
+                    alt={tool.name}
+                    width={120}
+                    height={32}
+                    className="opacity-90 group-hover:opacity-100 transition"
+                  />
                 </a>
               ))}
             </div>
