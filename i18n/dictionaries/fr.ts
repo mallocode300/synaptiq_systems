@@ -21,7 +21,7 @@ export const fr = {
   about: {
     title: "La performance naît de la connexion",
     text:
-      "Inspirés par la synapse — le pont vital qui transmet l’information dans le cerveau — nous comblons l’écart entre une idée brillante et son succès tangible. Nous en sommes les architectes.",
+      "Inspirés par la synapse — le pont vital qui transmet l’information dans le cerveau — nous comblons l’écart entre une idée brillante et son succès tangible. Nous en sommes les architectes. Notre travail relie stratégie, logiciels et matériels en un système cohérent, afin que chaque décision, flux et interface serve vos objectifs et crée un effet cumulatif.",
   },
   approach: {
     title: "Notre approche",

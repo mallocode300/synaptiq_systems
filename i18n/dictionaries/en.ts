@@ -21,7 +21,7 @@ export const en = {
   about: {
     title: "Performance is Born from Connection",
     text:
-      "Inspired by the synapse—the vital bridge that transmits information in the brain—we close the critical gap between a brilliant idea and its tangible success. We are the architects of these connections.",
+      "Inspired by the synapse—the vital bridge that transmits information in the brain—we close the critical gap between a brilliant idea and its tangible success. We are the architects of these connections. Our work joins strategy, software and hardware into one coherent system, so every decision, workflow and interface reinforces your outcomes and compounds over time.",
   },
   approach: {
     title: "Our Approach",
