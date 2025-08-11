@@ -31,17 +31,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
               >
                 {t.hero.cta}
               </a>
-              {process.env.NEXT_PUBLIC_CALENDLY_URL && (
-                <a
-                  href={process.env.NEXT_PUBLIC_CALENDLY_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-event="calendly-cta"
-                  className="inline-block ml-3 rounded-full border border-black/10 text-black px-6 py-3 md:px-7 md:py-3.5 text-sm md:text-base hover:bg-black/[.03] transition"
-                >
-                  {t.hero.calendly}
-                </a>
-              )}
+              {/* Secondary Calendly button removed per request; keep primary blue CTA */}
             </div>
           </Reveal>
         </section>
