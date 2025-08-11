@@ -104,11 +104,33 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">{t.expertise.title}</h2>
             <p className="max-w-3xl text-black/70 mb-8">{t.expertise.text}</p>
-            <div className="flex flex-wrap items-center gap-10 md:gap-14 opacity-90">
-              <Image src="/logos/zapier.svg" alt="Zapier" width={90} height={26} />
-              <Image src="/logos/make.svg" alt="Make" width={70} height={26} />
-              <Image src="/logos/n8n.svg" alt="n8n" width={70} height={26} />
-              <Image src="/logos/retool.svg" alt="Retool" width={90} height={26} />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { name: "Zapier", logo: "/logos/zapier.svg", href: "https://zapier.com" },
+                { name: "Make", logo: "/logos/make.svg", href: "https://www.make.com" },
+                { name: "n8n", logo: "/logos/n8n.svg", href: "https://n8n.io" },
+                { name: "Retool", logo: "/logos/retool.svg", href: "https://retool.com" },
+              ].map((tool) => (
+                <a
+                  key={tool.name}
+                  href={tool.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group p-6 rounded-2xl border border-black/5 hover:border-[#035096]/30 bg-white/70 backdrop-blur-sm transition shadow-sm hover:shadow-md flex items-center justify-center"
+                  aria-label={tool.name}
+                >
+                  <div className="flex flex-col items-center gap-3">
+                    <Image
+                      src={tool.logo}
+                      alt={tool.name}
+                      width={110}
+                      height={30}
+                      className="opacity-90 group-hover:opacity-100 transition"
+                    />
+                    <span className="text-sm text-black/60 group-hover:text-black/80">{tool.name}</span>
+                  </div>
+                </a>
+              ))}
             </div>
           </Reveal>
         </section>
