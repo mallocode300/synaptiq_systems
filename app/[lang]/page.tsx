@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
-import ContactForm from "@/components/ContactForm";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
 import Testimonials from "@/components/Testimonials";
@@ -164,9 +163,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
                 {t.insights.cta}
                 <span aria-hidden>→</span>
               </a>
-              <a href={`/${lang}/insights`} className="text-sm underline hover:no-underline">
-                {lang === 'fr' ? 'Derniers articles' : 'Latest posts'}
-              </a>
             </div>
           </Reveal>
         </section>
@@ -235,12 +231,9 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         <section id="contact" className="container py-16 md:py-24">
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-semibold mb-8">{t.contact.title}</h2>
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              <ContactForm />
-              <div>
-                <h3 className="text-lg font-semibold mb-3">{lang === 'fr' ? 'Réserver un créneau' : 'Book a time'}</h3>
-                <CalendlyEmbed />
-              </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-3">{lang === 'fr' ? 'Réserver un créneau' : 'Book a time'}</h3>
+              <CalendlyEmbed />
             </div>
           </Reveal>
         </section>
